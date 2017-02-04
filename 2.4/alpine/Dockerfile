@@ -24,7 +24,7 @@ RUN set -ex \
     && export GYP_DEFINES="$GYP_DEFINES linux_use_bundled_binutils=0 linux_use_bundled_gold=0" \
     && gem install --verbose libv8-$LIBV8_VERSION.gem \
     \
-    && apk del .libv8-builddeps \
+    && apk del --purge .libv8-builddeps \
     \
     && cd ../ \
     && rm -rf ./libv8 \
@@ -40,5 +40,5 @@ RUN set -ex \
       build-base \
     && gem install therubyracer \
     && rm -fr /usr/local/bundle/gems/libv8-$LIBV8_VERSION/vendor \
-    && apk del build-dependencies \
+    && apk del --purge build-dependencies \
     && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
