@@ -35,9 +35,9 @@ RUN set -ex \
     && rm -rf ./v8 ./depot_tools \
     && mv /tmp/v8 . \
     \
-    && apk --no-cache --update add libstdc++ \
-    && apk --no-cache --update add --virtual=build-dependencies \
-                                build-base \
+    && apk add --update --no-cache libstdc++ \
+    && apk add --update --no-cache --virtual=build-dependencies \
+      build-base \
     && gem install therubyracer \
     && rm -fr /usr/local/bundle/gems/libv8-$LIBV8_VERSION/vendor \
     && apk del build-dependencies \
