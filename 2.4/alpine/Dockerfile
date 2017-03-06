@@ -1,7 +1,7 @@
 FROM ruby:2.4.0-alpine
 
-ENV LIBV8_MAJOR 3.16
-ENV LIBV8_VERSION 3.16.14.17-x86_64-linux
+ENV LIBV8_BRANCH v3.16.14.19
+ENV LIBV8_VERSION 3.16.14.19-x86_64-linux
 
 RUN set -ex \
     \
@@ -17,7 +17,7 @@ RUN set -ex \
       linux-headers \
       build-base \
     \
-    && git clone -b $LIBV8_MAJOR --recursive git://github.com/cowboyd/libv8.git \
+    && git clone -b $LIBV8_BRANCH --recursive git://github.com/cowboyd/libv8.git \
     && cd ./libv8 \
     && sed -i -e 's/Gem::Platform::RUBY/Gem::Platform.local/' libv8.gemspec \
     && gem build --verbose libv8.gemspec \
